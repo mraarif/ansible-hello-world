@@ -1,0 +1,23 @@
+- name: upgrade all packages
+  yum:
+    name: "*"
+    state: latest
+
+- name: add node repo
+  shell: |
+    curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+
+- name: install nodejs
+  shell: |
+    yum install -y nodejs
+
+- name: copy appjs file
+  copy:
+    src: app.js
+    dest: /home/ec2-user/src/app.js
+    backup: yes
+
+- name: start nodejs server
+  shell: |
+    cd /home/ec2-user/src
+    node app.js

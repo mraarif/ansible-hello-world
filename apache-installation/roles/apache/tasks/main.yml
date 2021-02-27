@@ -8,3 +8,9 @@
   shell: |
     systemctl start httpd
     systemctl enable httpd
+
+- name: add index file
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+    backup: yes
