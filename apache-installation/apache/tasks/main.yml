@@ -1,0 +1,10 @@
+---
+- name: Install apache
+  shell: |
+    yum update -y
+    yum install -y httpd
+
+- name: start apache
+  shell: |
+    systemctl start httpd
+    systemctl enable httpd
